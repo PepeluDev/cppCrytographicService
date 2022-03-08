@@ -27,7 +27,7 @@ std::function<void(const request &, const response &)> getCryptographicHandler(s
   return [encryptionFunc](const request &req, const response &res) {
       auto sharedStream = std::make_shared<std::stringstream>();
       req.on_data([&res,sharedStream,encryptionFunc](const uint8_t * data, std::size_t size){
-        
+
         if(size > 0) {
           *sharedStream << data;
           return;
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
   server.handle("/api/crypto/caesar/decrypt", getDecipherHandler(caesarAlgorithm));
 
   // Start server
-  boost::system::error_code ec;
+  boost::system::error_code ec; 
   const std::string SERVER_PORT = "3000";
   std::cout << "SERVER STARTING IN PORT: " << SERVER_PORT <<  std::endl;
   if (server.listen_and_serve(ec, "0.0.0.0", SERVER_PORT)) {
