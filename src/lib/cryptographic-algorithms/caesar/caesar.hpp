@@ -16,9 +16,8 @@ public:
 
 private:
     bool isCharInAlphabet(char c) const;
-    char shiftChar(char c, int number_of_shifts) const;
-    char shiftCharWith(char c, int number_of_shifts,std::function<char(char,int)> shiftCharLambda) const;
-    std::string shiftStringWith(const std::string& message, const std::string& key, std::function<char(char,int)> shiftCharLambda) const;
+    char shiftCharWith(char c, std::function<char(char)> shiftCharLambda) const;
+    std::string shiftStringWith(const std::string& message, std::function<char(char)> shiftCharLambda) const;
 
     const std::string ALPHABET{"abcdefghijklmnopqrstuvwxyz"};
     const int ALPHABET_LEN = 26;
