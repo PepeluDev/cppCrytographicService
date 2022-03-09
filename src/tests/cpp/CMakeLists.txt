@@ -2,6 +2,7 @@ add_executable( unit-test "")
 
 target_link_libraries( unit-test
 PRIVATE
+        language-detectors
         cryptographic-algorithms
         ssl
         crypto
@@ -13,3 +14,4 @@ PRIVATE
 )
 
 add_subdirectory(cryptographic-algorithms)
+add_subdirectory(language-detectors)

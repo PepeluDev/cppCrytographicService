@@ -24,7 +24,7 @@ char caesar::shiftCharWith(char character, std::function<char(char)> shiftCharLa
     return  lowerChar != character ? std::toupper(shiftedLowerChar) : shiftedLowerChar;
 }
 
-std::string caesar::shiftStringWith(const std::string& message, std::function<char(char)> shiftCharLambda) const{   
+std::string caesar::shiftStringWith(const std::string& message, std::function<char(char)> shiftCharLambda) const{
     std::stringstream sstream;
     for(std::string::size_type i = 0; i < message.length(); i++){
         sstream << (isspace(message[i]) ? message[i] : shiftCharWith(message[i],shiftCharLambda));
