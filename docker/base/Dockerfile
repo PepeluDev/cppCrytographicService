@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add build-base cmake wget tar linux-headers openssl-dev libev-dev openssl-libs-static curl-dev zlib-dev git valgrind
+RUN apk add build-base cmake wget tar linux-headers openssl-dev libev-dev openssl-libs-static curl-dev zlib-dev git valgrind clang-extra-tools
 
 # Other dependencies
 
