@@ -1,29 +1,29 @@
+#include "trie/trie_language_detector.hpp"
+
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-
-#include "trie/trie_language_detector.hpp"
 
 using testing::_;
 
 class trie_language_detector_test : public ::testing::Test
 {
 public:
-    void SetUp() override {
+    void SetUp() override
+    {
         language_detector = std::make_unique<detectors::trie_language_detector>(words_dictionary);
-     };
+    };
 
 protected:
     std::unique_ptr<detectors::trie_language_detector> language_detector;
 
-    std::vector<std::string> words_dictionary{
-        "THIS","IS","A","SIMPLE","LIST","OF","WORDS","TO","INSERT","AND",
-        "SEARCH","IN","THE","TRIE","MATCHES","WITH","THE","BELOW","TEXT",
-        "LANGUAGE"};
+    std::vector<std::string> words_dictionary{"THIS",    "IS",     "A",   "SIMPLE", "LIST", "OF",      "WORDS",
+                                              "TO",      "INSERT", "AND", "SEARCH", "IN",   "THE",     "TRIE",
+                                              "MATCHES", "WITH",   "THE", "BELOW",  "TEXT", "LANGUAGE"};
     const std::string english_text =
-    "This is a simple text that we will use to check if the language matches with \
+        "This is a simple text that we will use to check if the language matches with \
     the one of the words in the list above";
     const std::string spanish_text =
-    "Esto es un simple texto que usaremos para comprobar si el lenguaje coincide \
+        "Esto es un simple texto que usaremos para comprobar si el lenguaje coincide \
     con el de las palabras de la lista de arriba";
 };
 

@@ -5,7 +5,6 @@
 
 namespace detectors
 {
-
 class language_detector_if
 {
 public:

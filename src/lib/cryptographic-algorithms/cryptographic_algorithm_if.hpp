@@ -4,7 +4,6 @@
 
 namespace algorithms
 {
-
 class cryptographic_algorithm_if
 {
 public:
