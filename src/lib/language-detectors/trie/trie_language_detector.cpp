@@ -12,14 +12,17 @@ trie_language_detector::trie_language_detector(const std::vector<std::string>& l
     this->tree->addWords(language_dictionary);
 }
 
-void splitText(std::string const& str, const char* delimiter, std::vector<std::string>& out)
+void splitText(const std::string& str, const char* delimiter, std::vector<std::string>& out)
 {
-    char* token = strtok(const_cast<char*>(str.c_str()), delimiter);
+    char* cstr_copy = new char[str.length() + 1];
+    std::strcpy(cstr_copy, str.c_str());
+    char* token = strtok(cstr_copy, delimiter);
     while (token != nullptr)
     {
         out.push_back(std::string(token));
         token = strtok(nullptr, delimiter);
     }
+    delete[] cstr_copy;
 }
 
 bool trie_language_detector::languageMatches(const std::string& text) const

@@ -41,3 +41,10 @@ TEST_F(trie_language_detector_test, it_should_return_false_if_the_input_text_is_
 {
     ASSERT_FALSE(language_detector->languageMatches(""));
 }
+
+TEST_F(trie_language_detector_test, it_should_not_modify_the_input_string)
+{
+    std::string text_copy = std::string(english_text);
+    language_detector->languageMatches(text_copy);
+    ASSERT_EQ(english_text, text_copy);
+}
