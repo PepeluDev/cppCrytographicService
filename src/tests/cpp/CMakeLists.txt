@@ -5,6 +5,7 @@ PRIVATE
         shifters
         language_detectors
         ciphers
+        crackers
         ssl
         crypto
         dl
@@ -17,3 +18,4 @@ PRIVATE
 add_subdirectory(shifters)
 add_subdirectory(ciphers)
 add_subdirectory(language_detectors)
+add_subdirectory(crackers)

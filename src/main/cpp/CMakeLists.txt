@@ -14,4 +14,6 @@ PRIVATE
     dl
     pthread
     ciphers
+    language_detectors
+    crackers
 )

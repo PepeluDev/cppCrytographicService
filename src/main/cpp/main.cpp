@@ -10,7 +10,9 @@
 
 // Own libs
 #include "caesar/caesar_cipher.hpp"
+#include "caesar/caesar_cracker.hpp"
 #include "cipher_if.hpp"
+#include "cracker_if.hpp"
 
 // namespaces
 using namespace nghttp2::asio_http2;
