@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p output
+mkdir -p valgrind-output
 
 valgrind --leak-check=full \
          --show-leak-kinds=all \
