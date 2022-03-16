@@ -1,4 +1,4 @@
-#include "caesar.hpp"
+#include "caesar_cipher.hpp"
 
 #include <cctype>
 #include <functional>
@@ -8,15 +8,15 @@
 
 namespace algorithms
 {
-bool caesar::isCharInAlphabet(char character) const
+bool caesar_cipher::isCharInAlphabet(char character) const
 {
     return ALPHABET[0] <= character && character <= ALPHABET[ALPHABET_LEN - 1];
 }
 
-char caesar::shiftCharWith(char character, std::function<char(char)> shiftCharLambda) const
+char caesar_cipher::shiftCharWith(char character, std::function<char(char)> shiftCharLambda) const
 {
     char lowerChar = std::tolower(character);
-    if (!caesar::isCharInAlphabet(lowerChar))
+    if (!caesar_cipher::isCharInAlphabet(lowerChar))
     {
         std::stringstream exceptionStream;
         exceptionStream << "The " << character << " character is not in the defined alphabet";
@@ -26,7 +26,7 @@ char caesar::shiftCharWith(char character, std::function<char(char)> shiftCharLa
     return lowerChar != character ? std::toupper(shiftedLowerChar) : shiftedLowerChar;
 }
 
-std::string caesar::shiftStringWith(const std::string& message, std::function<char(char)> shiftCharLambda) const
+std::string caesar_cipher::shiftStringWith(const std::string& message, std::function<char(char)> shiftCharLambda) const
 {
     std::stringstream sstream;
     for (std::string::size_type i = 0; i < message.length(); i++)
@@ -36,7 +36,7 @@ std::string caesar::shiftStringWith(const std::string& message, std::function<ch
     return sstream.str();
 }
 
-std::string caesar::encrypt(const std::string& message, const std::string& key) const
+std::string caesar_cipher::encrypt(const std::string& message, const std::string& key) const
 {
     int number_of_shifts = std::stoi(key);
     std::function<char(char)> encryptCharLambda = [this, number_of_shifts](char character)
@@ -48,7 +48,7 @@ std::string caesar::encrypt(const std::string& message, const std::string& key) 
     return shiftStringWith(message, encryptCharLambda);
 }
 
-std::string caesar::decrypt(const std::string& message, const std::string& key) const
+std::string caesar_cipher::decrypt(const std::string& message, const std::string& key) const
 {
     int number_of_shifts = std::stoi(key);
     std::function<char(char)> decryptCharLambda = [this, number_of_shifts](char character)

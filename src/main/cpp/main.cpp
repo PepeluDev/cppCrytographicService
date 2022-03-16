@@ -9,8 +9,8 @@
 #include <sstream>
 
 // Own libs
-#include "caesar/caesar.hpp"
-#include "cryptographic_algorithm_if.hpp"
+#include "caesar/caesar_cipher.hpp"
+#include "cipher_if.hpp"
 
 // namespaces
 using namespace nghttp2::asio_http2;
@@ -67,7 +67,7 @@ std::function<void(const request &, const response &)> getCryptographicHandler(
 }
 
 std::function<void(const request &, const response &)> getCipherHandler(
-    std::shared_ptr<algorithms::cryptographic_algorithm_if> cryptographic_algorithm)
+    std::shared_ptr<algorithms::cipher_if> cryptographic_algorithm)
 {
     std::function<std::string(std::string, std::string)> encryptionFunc =
         [cryptographic_algorithm](std::string message, std::string key)
@@ -76,7 +76,7 @@ std::function<void(const request &, const response &)> getCipherHandler(
 }
 
 std::function<void(const request &, const response &)> getDecipherHandler(
-    std::shared_ptr<algorithms::cryptographic_algorithm_if> cryptographic_algorithm)
+    std::shared_ptr<algorithms::cipher_if> cryptographic_algorithm)
 {
     std::function<std::string(std::string, std::string)> decryptionFunc =
         [cryptographic_algorithm](std::string message, std::string key)
@@ -87,7 +87,7 @@ std::function<void(const request &, const response &)> getDecipherHandler(
 int main(int argc, char *argv[])
 {
     // Crypto Algorithms
-    std::shared_ptr<algorithms::caesar> caesarAlgorithm = std::make_shared<algorithms::caesar>();
+    std::shared_ptr<algorithms::caesar_cipher> caesarCipher = std::make_shared<algorithms::caesar_cipher>();
 
     http2 server;
     // Server Handlers
@@ -99,8 +99,8 @@ int main(int argc, char *argv[])
                   });
 
     // Crypto Handlers
-    server.handle("/api/crypto/caesar/encrypt", getCipherHandler(caesarAlgorithm));
-    server.handle("/api/crypto/caesar/decrypt", getDecipherHandler(caesarAlgorithm));
+    server.handle("/api/crypto/caesar/encrypt", getCipherHandler(caesarCipher));
+    server.handle("/api/crypto/caesar/decrypt", getDecipherHandler(caesarCipher));
 
     // Start server
     boost::system::error_code ec;

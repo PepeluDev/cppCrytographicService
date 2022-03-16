@@ -1,2 +1,0 @@
-add_subdirectory(cryptographic-algorithms)
-add_subdirectory(language-detectors)

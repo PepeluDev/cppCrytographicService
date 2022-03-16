@@ -4,10 +4,10 @@
 
 namespace algorithms
 {
-class cryptographic_algorithm_if
+class cipher_if
 {
 public:
-    virtual ~cryptographic_algorithm_if() = default;
+    virtual ~cipher_if() = default;
     virtual std::string encrypt(const std::string& message, const std::string& key) const = 0;
     virtual std::string decrypt(const std::string& message, const std::string& key) const = 0;
 };

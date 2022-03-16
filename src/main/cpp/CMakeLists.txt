@@ -13,5 +13,5 @@ PRIVATE
     crypto
     dl
     pthread
-    cryptographic-algorithms
+    ciphers
 )

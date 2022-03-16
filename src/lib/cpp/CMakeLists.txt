@@ -1,0 +1,2 @@
+add_subdirectory(ciphers)
+add_subdirectory(language_detectors)

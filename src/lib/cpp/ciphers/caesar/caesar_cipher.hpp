@@ -4,11 +4,11 @@
 #include <string>
 #include <vector>
 
-#include "../cryptographic_algorithm_if.hpp"
+#include "../cipher_if.hpp"
 
 namespace algorithms
 {
-class caesar : public cryptographic_algorithm_if
+class caesar_cipher : public cipher_if
 {
 public:
     std::string encrypt(const std::string& message, const std::string& key) const override;

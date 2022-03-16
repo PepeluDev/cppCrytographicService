@@ -2,8 +2,8 @@ add_executable( unit-test "")
 
 target_link_libraries( unit-test
 PRIVATE
-        language-detectors
-        cryptographic-algorithms
+        language_detectors
+        ciphers
         ssl
         crypto
         dl
@@ -13,5 +13,5 @@ PRIVATE
         pthread
 )
 
-add_subdirectory(cryptographic-algorithms)
-add_subdirectory(language-detectors)
+add_subdirectory(ciphers)
+add_subdirectory(language_detectors)
