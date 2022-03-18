@@ -66,3 +66,37 @@ TEST_F(caesar_cipher_test, it_should_return_the_expected_decrypted_message_with_
     auto output = caesarCipher->decrypt(CIPHERED_MESSAGE, DEFAULT_KEY);
     ASSERT_EQ(PLAIN_TEXT_MESSAGE, output);
 }
+
+TEST_F(caesar_cipher_test, it_should_throw_if_a_character_out_of_the_alphabet_is_in_the_input_message_when_encrypt)
+{
+    try
+    {
+        caesarCipher->encrypt("***", DEFAULT_KEY);
+        FAIL() << "Expected std::invalid_argument";
+    }
+    catch (std::invalid_argument const& err)
+    {
+        EXPECT_EQ(err.what(), std::string("The \'*\' character is not in the defined alphabet"));
+    }
+    catch (...)
+    {
+        FAIL() << "Expected std::invalid_argument";
+    }
+}
+
+TEST_F(caesar_cipher_test, it_should_throw_if_a_character_out_of_the_alphabet_is_in_the_input_message_when_decrypt)
+{
+    try
+    {
+        caesarCipher->encrypt("***", DEFAULT_KEY);
+        FAIL() << "Expected std::invalid_argument";
+    }
+    catch (std::invalid_argument const& err)
+    {
+        EXPECT_EQ(err.what(), std::string("The \'*\' character is not in the defined alphabet"));
+    }
+    catch (...)
+    {
+        FAIL() << "Expected std::invalid_argument";
+    }
+}
