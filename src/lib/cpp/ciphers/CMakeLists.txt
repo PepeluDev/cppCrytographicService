@@ -1,6 +1,7 @@
 add_library(ciphers
 STATIC
     caesar/caesar_cipher.cpp
+    vigenere/vigenere_cipher.cpp
 )
 
 target_include_directories(ciphers
