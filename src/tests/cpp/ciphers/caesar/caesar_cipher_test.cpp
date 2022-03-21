@@ -61,6 +61,12 @@ TEST_F(caesar_cipher_test, it_should_return_the_expected_encrypted_message_with_
     ASSERT_EQ(CIPHERED_MESSAGE, output);
 }
 
+TEST_F(caesar_cipher_test, it_should_return_the_expected_encrypted_message_with_a_key_bigger_than_a)
+{
+    auto output = caesarCipher->encrypt(PLAIN_TEXT_MESSAGE, "102");
+    ASSERT_EQ("Rfgq gq y njygl rcqr kcqqyec", output);
+}
+
 TEST_F(caesar_cipher_test, it_should_return_the_expected_decrypted_message_with_a_key_in_range_when_decrypt)
 {
     auto output = caesarCipher->decrypt(CIPHERED_MESSAGE, DEFAULT_KEY);
